@@ -18,7 +18,7 @@ private:
   static const uint16_t sampleFreqency = 5000;
   static const uint16_t samplePeriod = round(1000000 * (1.0f / sampleFreqency));
   static const uint16_t samples = 512;//Multiple of 2 only
-  static const uint8_t micPin = 34;
+  static const uint8_t micPin = 34;//25
   uint16_t lowThreshold = 50;
   
   arduinoFFT FFT = arduinoFFT();
@@ -100,6 +100,8 @@ public:
 
   void Fetch(){
     if(xSemaphoreTake(fftMutex, (TickType_t)5) == pdTRUE){
+      //Serial.println(0);
+      //Serial.println(4096);
       for(uint16_t i = lowThreshold; i < samples / 2; i++){
         //Serial.println(realData[i]);
       }
